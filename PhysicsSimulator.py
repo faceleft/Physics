@@ -1,5 +1,5 @@
 import math
-
+import copy
 
 def toVector(scalar, direction):
     if scalar != 0:
@@ -129,8 +129,8 @@ class Physics:
                                 F.append(toVector(Ft, distance))
                     o.Run(F, 1 / accuracy)
                 if save_step_answer:
-                    out.append((step_out, nowTime/accuracy))
+                    out.append((copy.deepcopy(step_out), nowTime/accuracy))
             else:
                 return "No objects"
-        out.append((step_out, nowTime/accuracy))
+        out.append((copy.deepcopy(step_out), nowTime/accuracy))
         return out
