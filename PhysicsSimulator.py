@@ -138,6 +138,6 @@ class Physics:
                 if save_step_answer:
                     out.append((copy.deepcopy(step_out), nowTime/accuracy))
             else:
-                return "No objects"
+                return 0
         out.append((copy.deepcopy(step_out), nowTime/accuracy))
         return out
