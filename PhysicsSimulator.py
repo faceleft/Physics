@@ -47,10 +47,10 @@ class Vector(Location):
 
 
 class Scene:
-    def __init__(self, p, g, is_gravity):
+    def __init__(self, density, acceleration_of_gravity, is_gravity):
         self.gravity = is_gravity
-        self.p = p
-        self.g = g
+        self.p = density
+        self.g = acceleration_of_gravity
 
 
 class Object:
@@ -102,7 +102,14 @@ class Physics:
                     return 0
         self.objects.append(this_object)
         return 1
-
+    
+    def DeleteObject(self, name):
+        for c, i in enumerate(self.objects):
+            if i.name == name:
+                self.objects.pop(c)
+                return 1
+        return 0
+    
     def SetScene(self, p, g, gravity):
         self.scene = Scene(p, g, gravity)
 
